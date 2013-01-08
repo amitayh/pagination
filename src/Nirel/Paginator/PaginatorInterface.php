@@ -9,26 +9,26 @@ interface PaginatorInterface extends \Iterator
      * @param int $number
      * @return PageInterface
      */
-    public function getPage($number);
+    function getPage($number);
 
     /**
      * @return \Nirel\Paginator\Adapter\AdapterInterface
      */
-    public function getAdapter();
+    function getAdapter();
 
     /**
      * @return int
      */
-    public function getPageLimit();
+    function getPageLimit();
 
     /**
      * @return int
      */
-    public function getNumObjects();
+    function getNumObjects();
 
     /**
      * @return int
      */
-    public function getNumPages();
+    function getNumPages();
 
 }

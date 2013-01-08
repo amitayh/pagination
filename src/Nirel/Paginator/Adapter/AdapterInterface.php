@@ -8,13 +8,13 @@ interface AdapterInterface
     /**
      * @return int
      */
-    public function getNumObjects();
+    function getNumObjects();
 
     /**
      * @param int $offset
      * @param int $limit
      * @return \Iterator
      */
-    public function getObjects($offset, $limit);
+    function getObjects($offset, $limit);
 
 }

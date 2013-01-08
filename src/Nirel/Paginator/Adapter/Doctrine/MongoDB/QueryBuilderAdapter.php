@@ -11,27 +11,30 @@ class QueryBuilderAdapter implements AdapterInterface
     /**
      * @var QueryBuilder
      */
-    protected $_qb;
+    protected $qb;
 
     /**
      * @param QueryBuilder $qb
      */
-    public function __construct(QueryBuilder $qb) {
-        $this->_qb = $qb;
+    public function __construct(QueryBuilder $qb)
+    {
+        $this->qb = $qb;
     }
 
     /**
      * @inheritdoc
      */
-    public function getNumObjects() {
-        return $this->_qb->getQuery()->count();
+    public function getNumObjects()
+    {
+        return $this->qb->getQuery()->count();
     }
 
     /**
      * @inheritdoc
      */
-    public function getObjects($offset, $limit) {
-        return $this->_qb->skip($offset)->limit($limit)->getQuery()->execute();
+    public function getObjects($offset, $limit)
+    {
+        return $this->qb->skip($offset)->limit($limit)->getQuery()->execute();
     }
 
 }

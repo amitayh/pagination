@@ -8,52 +8,52 @@ interface PageInterface extends \IteratorAggregate, \Countable
     /**
      * @return int
      */
-    public function getNumber();
+    function getNumber();
 
     /**
      * @return bool
      */
-    public function isFirst();
+    function isFirst();
 
     /**
      * @return bool
      */
-    public function isLast();
+    function isLast();
 
     /**
      * @return bool
      */
-    public function hasPrev();
+    function hasPrev();
 
     /**
      * @return int
      */
-    public function prevPageNum();
+    function prevPageNum();
 
     /**
      * @return bool
      */
-    public function hasNext();
+    function hasNext();
 
     /**
      * @return int
      */
-    public function nextPageNum();
+    function nextPageNum();
 
     /**
      * @return int
      */
-    public function getStartIndex();
+    function getStartIndex();
 
     /**
      * @return int
      */
-    public function getEndIndex();
+    function getEndIndex();
 
     /**
      * @param int $tail
      * @return array
      */
-    public function getSlidingPaginationRange($tail);
+    function getSlidingPaginationRange($tail);
 
 }

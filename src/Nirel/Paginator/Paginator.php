@@ -10,42 +10,43 @@ class Paginator implements PaginatorInterface
     /**
      * @var AdapterInterface
      */
-    protected $_adapter;
+    protected $adapter;
 
     /**
      * @var int
      */
-    protected $_perPage;
+    protected $perPage;
 
     /**
      * @var int
      */
-    protected $_numObjects;
+    protected $numObjects;
 
     /**
      * @var int
      */
-    protected $_numPages;
+    protected $numPages;
 
     /**
      * @var int
      */
-    protected $_cursor;
+    protected $cursor;
 
     /**
      * @var bool
      */
-    protected $_allowEmptyFirstPage;
+    protected $allowEmptyFirstPage;
 
     /**
      * @param AdapterInterface $adapter
      * @param int $perPage
      * @param bool $allowEmptyFirstPage
      */
-    public function __construct(AdapterInterface $adapter, $perPage, $allowEmptyFirstPage = true) {
-        $this->_adapter = $adapter;
-        $this->_perPage = $perPage;
-        $this->_allowEmptyFirstPage = $allowEmptyFirstPage;
+    public function __construct(AdapterInterface $adapter, $perPage, $allowEmptyFirstPage = true)
+    {
+        $this->adapter = $adapter;
+        $this->perPage = $perPage;
+        $this->allowEmptyFirstPage = $allowEmptyFirstPage;
     }
 
     /**
@@ -53,12 +54,13 @@ class Paginator implements PaginatorInterface
      * @return int
      * @throws \OutOfRangeException
      */
-    public function validatePageNum($number) {
+    public function validatePageNum($number)
+    {
         $number = (int) $number;
         if ($number < 1) {
             throw new \OutOfRangeException('Page number is less than 1');
         } elseif ($number > $this->getNumPages()) {
-            if ($number != 1 || !$this->_allowEmptyFirstPage) {
+            if ($number != 1 || !$this->allowEmptyFirstPage) {
                 throw new \OutOfRangeException('Empty page');
             }
         }
@@ -68,77 +70,87 @@ class Paginator implements PaginatorInterface
     /**
      * @inheritdoc
      */
-    public function getPage($number) {
+    public function getPage($number)
+    {
         return new Page($this, $this->validatePageNum($number));
     }
 
     /**
      * @inheritdoc
      */
-    public function getAdapter() {
-        return $this->_adapter;
+    public function getAdapter()
+    {
+        return $this->adapter;
     }
 
     /**
      * @inheritdoc
      */
-    public function getPageLimit() {
-        return $this->_perPage;
+    public function getPageLimit()
+    {
+        return $this->perPage;
     }
 
     /**
      * @inheritdoc
      */
-    public function getNumObjects() {
-        if ($this->_numObjects === null) {
-            $this->_numObjects = $this->_adapter->getNumObjects();
+    public function getNumObjects()
+    {
+        if ($this->numObjects === null) {
+            $this->numObjects = $this->adapter->getNumObjects();
         }
-        return $this->_numObjects;
+        return $this->numObjects;
     }
 
     /**
      * @inheritdoc
      */
-    public function getNumPages() {
-        if ($this->_numPages === null) {
-            $this->_numPages = (int) ceil($this->getNumObjects() / $this->_perPage);
+    public function getNumPages()
+    {
+        if ($this->numPages === null) {
+            $this->numPages = (int) ceil($this->getNumObjects() / $this->perPage);
         }
-        return $this->_numPages;
+        return $this->numPages;
     }
 
     /**
      * @inheritdoc
      */
-    public function current() {
-        return $this->getPage($this->_cursor + 1);
+    public function current()
+    {
+        return $this->getPage($this->cursor + 1);
     }
 
     /**
      * @inheritdoc
      */
-    public function next() {
-        $this->_cursor++;
+    public function next()
+    {
+        $this->cursor++;
     }
 
     /**
      * @inheritdoc
      */
-    public function key() {
-        return $this->_cursor;
+    public function key()
+    {
+        return $this->cursor;
     }
 
     /**
      * @inheritdoc
      */
-    public function valid() {
-        return ($this->_cursor < $this->getNumPages());
+    public function valid()
+    {
+        return ($this->cursor < $this->getNumPages());
     }
 
     /**
      * @inheritdoc
      */
-    public function rewind() {
-        $this->_cursor = 0;
+    public function rewind()
+    {
+        $this->cursor = 0;
     }
 
 }
