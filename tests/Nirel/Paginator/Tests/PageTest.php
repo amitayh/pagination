@@ -7,7 +7,8 @@ use Nirel\Paginator\Tests\Factory;
 class PageTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testPageHelperMethods() {
+    public function testPageHelperMethods()
+    {
         $paginator = Factory::createPaginator(8, 5);
 
         $page = $paginator->getPage(1);
@@ -27,7 +28,8 @@ class PageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(3, $page->count());
     }
 
-    public function testIterator() {
+    public function testIterator()
+    {
         $paginator = Factory::createPaginator(8, 5);
         $page = $paginator->getPage(1);
         foreach ($page as $key => $object) {

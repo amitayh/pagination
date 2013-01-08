@@ -2,98 +2,108 @@
 
 namespace Nirel\Paginator;
 
-class Page implements \IteratorAggregate, \Countable
+class Page implements PageInterface
 {
 
     /**
      * @var Paginator
      */
-    protected $_paginator;
+    protected $paginator;
 
     /**
      * @var int
      */
-    protected $_number;
+    protected $number;
 
     /**
      * @param Paginator $paginator
      * @param int $number
      */
-    public function __construct(Paginator $paginator, $number) {
-        $this->_paginator = $paginator;
-        $this->_number = $number;
+    public function __construct(Paginator $paginator, $number)
+    {
+        $this->paginator = $paginator;
+        $this->number = $number;
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
-    public function getNumber() {
-        return $this->_number;
+    public function getNumber()
+    {
+        return $this->number;
     }
 
     /**
-     * @return bool
+     * @inheritdoc
      */
-    public function isFirst() {
-        return ($this->_number == 1);
+    public function isFirst()
+    {
+        return ($this->number == 1);
     }
 
     /**
-     * @return bool
+     * @inheritdoc
      */
-    public function isLast() {
-        return ($this->_number == $this->_paginator->getNumPages());
+    public function isLast()
+    {
+        return ($this->number == $this->paginator->getNumPages());
     }
 
     /**
-     * @return bool
+     * @inheritdoc
      */
-    public function hasPrev() {
-        return ($this->_number > 1);
+    public function hasPrev()
+    {
+        return ($this->number > 1);
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
-    public function prevPageNum() {
-        return $this->_paginator->validatePageNum($this->_number - 1);
+    public function prevPageNum()
+    {
+        return $this->paginator->validatePageNum($this->number - 1);
     }
 
     /**
-     * @return bool
+     * @inheritdoc
      */
-    public function hasNext() {
-        return ($this->_number < $this->_paginator->getNumPages());
+    public function hasNext()
+    {
+        return ($this->number < $this->paginator->getNumPages());
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
-    public function nextPageNum() {
-        return $this->_paginator->validatePageNum($this->_number + 1);
+    public function nextPageNum()
+    {
+        return $this->paginator->validatePageNum($this->number + 1);
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
-    public function getStartIndex() {
-        return ($this->_paginator->getPageLimit() * ($this->_number - 1)) + 1;
+    public function getStartIndex()
+    {
+        return ($this->paginator->getPageLimit() * ($this->number - 1)) + 1;
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
-    public function getEndIndex() {
+    public function getEndIndex()
+    {
         return $this->getStartIndex() + $this->count() - 1;
     }
 
     /**
-     * @param int $tail
-     * @return array
+     * @inheritdoc
      */
-    public function getSlidingPaginationRange($tail = 3) {
-        $current = $this->_number;
-        $numPages = $this->_paginator->getNumPages();
+    public function getSlidingPaginationRange($tail = 3)
+    {
+        $current = $this->number;
+        $numPages = $this->paginator->getNumPages();
         $low = $current - $tail;
         $high = $current + $tail;
         if ($low < 1) {
@@ -114,20 +124,22 @@ class Page implements \IteratorAggregate, \Countable
     /**
      * @inheritdoc
      */
-    public function getIterator() {
-        $paginator = $this->_paginator;
+    public function getIterator()
+    {
+        $paginator = $this->paginator;
         $source = $paginator->getAdapter();
         $limit = $paginator->getPageLimit();
-        $offset = ($this->_number - 1) * $limit;
+        $offset = ($this->number - 1) * $limit;
         return $source->getObjects($offset, $limit);
     }
 
     /**
      * @inheritdoc
      */
-    public function count() {
-        $current = $this->_number;
-        $paginator = $this->_paginator;
+    public function count()
+    {
+        $current = $this->number;
+        $paginator = $this->paginator;
         $pageLimit = $paginator->getPageLimit();
         $numPages = $paginator->getNumPages();
         if ($current == $numPages) {

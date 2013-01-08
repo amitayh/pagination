@@ -13,7 +13,8 @@ class Factory
      * @param int $perPage
      * @return Paginator
      */
-    public static function createPaginator($numObjects, $perPage) {
+    public static function createPaginator($numObjects, $perPage)
+    {
         $data = array();
         for ($i = 0; $i < $numObjects; $i++) {
             $data[] = "Object #$i";

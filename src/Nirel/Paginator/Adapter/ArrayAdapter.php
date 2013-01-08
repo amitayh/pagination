@@ -10,27 +10,30 @@ class ArrayAdapter implements AdapterInterface
     /**
      * @var array
      */
-    protected $_data;
+    protected $data;
 
     /**
      * @param array $data
      */
-    public function __construct(array $data) {
-        $this->_data = $data;
+    public function __construct(array $data)
+    {
+        $this->data = $data;
     }
 
     /**
      * @inheritdoc
      */
-    public function getNumObjects() {
-        return count($this->_data);
+    public function getNumObjects()
+    {
+        return count($this->data);
     }
 
     /**
      * @inheritdoc
      */
-    public function getObjects($offset, $limit) {
-        return new \ArrayIterator(array_slice($this->_data, $offset, $limit));
+    public function getObjects($offset, $limit)
+    {
+        return new \ArrayIterator(array_slice($this->data, $offset, $limit));
     }
 
 }
