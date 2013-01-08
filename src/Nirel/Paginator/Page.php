@@ -2,7 +2,7 @@
 
 namespace Nirel\Paginator;
 
-class Page implements \IteratorAggregate, \Countable
+class Page implements PageInterface
 {
 
     /**
@@ -25,71 +25,70 @@ class Page implements \IteratorAggregate, \Countable
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
     public function getNumber() {
         return $this->_number;
     }
 
     /**
-     * @return bool
+     * @inheritdoc
      */
     public function isFirst() {
         return ($this->_number == 1);
     }
 
     /**
-     * @return bool
+     * @inheritdoc
      */
     public function isLast() {
         return ($this->_number == $this->_paginator->getNumPages());
     }
 
     /**
-     * @return bool
+     * @inheritdoc
      */
     public function hasPrev() {
         return ($this->_number > 1);
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
     public function prevPageNum() {
         return $this->_paginator->validatePageNum($this->_number - 1);
     }
 
     /**
-     * @return bool
+     * @inheritdoc
      */
     public function hasNext() {
         return ($this->_number < $this->_paginator->getNumPages());
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
     public function nextPageNum() {
         return $this->_paginator->validatePageNum($this->_number + 1);
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
     public function getStartIndex() {
         return ($this->_paginator->getPageLimit() * ($this->_number - 1)) + 1;
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
     public function getEndIndex() {
         return $this->getStartIndex() + $this->count() - 1;
     }
 
     /**
-     * @param int $tail
-     * @return array
+     * @inheritdoc
      */
     public function getSlidingPaginationRange($tail = 3) {
         $current = $this->_number;

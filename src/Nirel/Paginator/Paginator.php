@@ -4,7 +4,7 @@ namespace Nirel\Paginator;
 
 use Nirel\Paginator\Adapter\AdapterInterface;
 
-class Paginator implements \Iterator
+class Paginator implements PaginatorInterface
 {
 
     /**
@@ -50,14 +50,6 @@ class Paginator implements \Iterator
 
     /**
      * @param int $number
-     * @return Page
-     */
-    public function getPage($number) {
-        return new Page($this, $this->validatePageNum($number));
-    }
-
-    /**
-     * @param int $number
      * @return int
      * @throws \OutOfRangeException
      */
@@ -74,21 +66,28 @@ class Paginator implements \Iterator
     }
 
     /**
-     * @return AdapterInterface
+     * @inheritdoc
+     */
+    public function getPage($number) {
+        return new Page($this, $this->validatePageNum($number));
+    }
+
+    /**
+     * @inheritdoc
      */
     public function getAdapter() {
         return $this->_adapter;
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
     public function getPageLimit() {
         return $this->_perPage;
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
     public function getNumObjects() {
         if ($this->_numObjects === null) {
@@ -98,7 +97,7 @@ class Paginator implements \Iterator
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
     public function getNumPages() {
         if ($this->_numPages === null) {
