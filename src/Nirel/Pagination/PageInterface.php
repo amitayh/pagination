@@ -1,6 +1,6 @@
 <?php
 
-namespace Nirel\Paginator;
+namespace Nirel\Pagination;
 
 interface PageInterface extends \IteratorAggregate, \Countable
 {
@@ -54,6 +54,6 @@ interface PageInterface extends \IteratorAggregate, \Countable
      * @param int $tail
      * @return array
      */
-    function getSlidingPaginationRange($tail);
+    function getSlidingPaginationRange($tail = 3);
 
 }

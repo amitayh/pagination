@@ -1,8 +1,8 @@
 <?php
 
-namespace Nirel\Paginator\Adapter;
+namespace Nirel\Pagination\Adapter;
 
-use Nirel\Paginator\Adapter\AdapterInterface;
+use Nirel\Pagination\Adapter\AdapterInterface;
 
 class ArrayAdapter implements AdapterInterface
 {

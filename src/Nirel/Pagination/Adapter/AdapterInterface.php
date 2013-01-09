@@ -1,6 +1,6 @@
 <?php
 
-namespace Nirel\Paginator\Adapter;
+namespace Nirel\Pagination\Adapter;
 
 interface AdapterInterface
 {

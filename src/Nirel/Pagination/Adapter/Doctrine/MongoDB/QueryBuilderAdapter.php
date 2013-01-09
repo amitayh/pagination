@@ -1,8 +1,8 @@
 <?php
 
-namespace Nirel\Paginator\Adapter\Doctrine\MongoDB;
+namespace Nirel\Pagination\Adapter\Doctrine\MongoDB;
 
-use Nirel\Paginator\Adapter\AdapterInterface;
+use Nirel\Pagination\Adapter\AdapterInterface;
 use Doctrine\MongoDB\Query\Builder as QueryBuilder;
 
 class QueryBuilderAdapter implements AdapterInterface

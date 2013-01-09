@@ -1,6 +1,6 @@
 <?php
 
-namespace Nirel\Paginator;
+namespace Nirel\Pagination;
 
 interface PaginatorInterface extends \Iterator
 {
@@ -12,7 +12,7 @@ interface PaginatorInterface extends \Iterator
     function getPage($number);
 
     /**
-     * @return \Nirel\Paginator\Adapter\AdapterInterface
+     * @return \Nirel\Pagination\Adapter\AdapterInterface
      */
     function getAdapter();
 

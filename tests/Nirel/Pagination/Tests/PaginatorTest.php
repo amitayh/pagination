@@ -1,8 +1,8 @@
 <?php
 
-namespace Nirel\Paginator\Tests;
+namespace Nirel\Pagination\Tests;
 
-use Nirel\Paginator\Tests\Factory;
+use Nirel\Pagination\Tests\Factory;
 
 class PaginatorTest extends \PHPUnit_Framework_TestCase
 {
