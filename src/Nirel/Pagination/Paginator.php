@@ -1,8 +1,8 @@
 <?php
 
-namespace Nirel\Paginator;
+namespace Nirel\Pagination;
 
-use Nirel\Paginator\Adapter\AdapterInterface;
+use Nirel\Pagination\Adapter\AdapterInterface;
 
 class Paginator implements PaginatorInterface
 {

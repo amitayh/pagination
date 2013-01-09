@@ -1,9 +1,9 @@
 <?php
 
-namespace Nirel\Paginator\Tests;
+namespace Nirel\Pagination\Tests;
 
-use Nirel\Paginator\Adapter\ArrayAdapter;
-use Nirel\Paginator\Paginator;
+use Nirel\Pagination\Adapter\ArrayAdapter;
+use Nirel\Pagination\Paginator;
 
 class Factory
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nirel\Paginator;
+namespace Nirel\Pagination;
 
 class Page implements PageInterface
 {

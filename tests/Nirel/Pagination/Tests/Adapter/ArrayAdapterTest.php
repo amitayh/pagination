@@ -1,8 +1,8 @@
 <?php
 
-namespace Nirel\Paginator\Tests\Adapter;
+namespace Nirel\Pagination\Tests\Adapter;
 
-use Nirel\Paginator\Adapter\ArrayAdapter;
+use Nirel\Pagination\Adapter\ArrayAdapter;
 
 class ArrayAdapterTest extends \PHPUnit_Framework_TestCase
 {
