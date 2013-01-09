@@ -15,12 +15,21 @@ class Factory
      */
     public static function createPaginator($numObjects, $perPage)
     {
+        $adapter = self::createArrayAdapter($numObjects);
+        return new Paginator($adapter, $perPage);
+    }
+
+    /**
+     * @param int $numObjects
+     * @return ArrayAdapter
+     */
+    public static function createArrayAdapter($numObjects)
+    {
         $data = array();
         for ($i = 0; $i < $numObjects; $i++) {
             $data[] = "Object #$i";
         }
-        $paginatable = new ArrayAdapter($data);
-        return new Paginator($paginatable, $perPage);
+        return new ArrayAdapter($data);
     }
 
 }
