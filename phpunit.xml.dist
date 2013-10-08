@@ -13,8 +13,8 @@
          bootstrap="tests/bootstrap.php"
 >
     <testsuites>
-        <testsuite name="Nirel Paginator Test Suite">
-            <directory>./tests/Nirel/</directory>
+        <testsuite name="Paginator Test Suite">
+            <directory>./tests/Amitayh/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
